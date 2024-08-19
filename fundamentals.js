@@ -9,7 +9,7 @@ const courseInfo = {
 const assignmentGroup = {
   id: 12345,
   name: 'Introduction to Computers',
-  course_id: 312,
+  course_id: 300,
   group_weight: 23,
   assignments: [
     {
@@ -36,7 +36,7 @@ const assignmentGroup = {
 };
 
 
-const learnerSubmissions = [
+const learnerSubmission = [
   {
     learner_id: 321,
     assignment_id: 1,
@@ -89,5 +89,16 @@ const learnerSubmissions = [
 
 
 
+
+function getLearnerData(courseInfo, assignmentGroup, learnerSubmission){
+  // If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
+  if (assignmentGroup.course_id !== courseInfo.id) {
+    throw new Error("Input was invalid, id's do not match.")
+  }
+  return ("Assignment Group and Course id's match.")
+}
+
+const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmission);
+console.log(result);
 
 
