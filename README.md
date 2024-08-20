@@ -4,7 +4,7 @@
 - This is a script that takes the information that was provided and outputs a consistent result.
 
 ## Sample Code Created
-`const assignmentGroup = {
+```const assignmentGroup = {
   id: 12345,
   name: 'Introduction to Computers',
   course_id: 300,
@@ -31,4 +31,4 @@
 
   ]
 
-};`
+};```
