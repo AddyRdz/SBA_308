@@ -93,12 +93,48 @@ const learnerSubmission = [
 function getLearnerData(courseInfo, assignmentGroup, learnerSubmission){
   // If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
   if (assignmentGroup.course_id !== courseInfo.id) {
-    throw new Error("Input was invalid, id's do not match.")
+    throw new Error("Input was invalid, id's do not match.");
   }
-  return ("Assignment Group and Course id's match.")
+
+  // implement a continue section to move on to the next part
+  return ("Assignment Group and Course id's match.");
+
+  // You should also account for potential errors in the data that your program receives. What if points_possible is 0? You cannot divide by zero. What if a value that you are expecting to be a number is instead a string? 
+  if(assignmentGroup.points_possible === 0 ){
+    console.error("Points possible is 0, skip this assignment.");
+    return;
+    // Check input is an actual number value and not a string.
+
+  }
+  try {
+    if(assignmentGroup.points_possible === 0){
+      console.log('Points possible is 0, skip this assignment.');
+    }else if (isNaN((assignmentGroup.points_possible))) { // continue to check if number.
+      console.log('Value added is a number, can include as assignment.');
+    }else {
+      throw new Error('Do not include in assignment')
+    }
+      } catch (error){
+        console.log(error);
+        }
+  //  In theory this would check if value is number, if not return an error.
+
+  // If an assignment is not yet due, do not include it in the results or the average. Additionally, if the learner’s submission is late (submitted_at is past due_at), deduct 10 percent of the total points possible from their score for that assignment.
+        // go through learnerSubmission to see the assignments and check if they were turned in before due date.
+
+   const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmission);
+    console.log(result);
+
+    // Run through object and provide score of each assignment submitted.
+    const grade = learnerSubmission.map(student => student.submission.score);
+
+    // Have to take into account that there are two different students and have to create an average for each.
+    // To do that have to run through each submission and group each learner id together. Then run through object and select each score then do math.
+    // Implement some try/catch to implement if assignment submitted after due date.     
+
+
 }
 
-const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmission);
-console.log(result);
+
 
 
